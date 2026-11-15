@@ -38,7 +38,7 @@
  function move(team){snapshot();if(team==='A'){if(position===8){scoreA++;position=4;status.textContent='GOAL for Team A! Kick-off from the centre.'}else{position++;status.textContent='Team A moves forward!'}}else{if(position===0){scoreB++;position=4;status.textContent='GOAL for Team B! Kick-off from the centre.'}else{position--;status.textContent='Team B moves forward!'}}render()}
  document.getElementById('moveA').addEventListener('click',()=>move('A'));document.getElementById('moveB').addEventListener('click',()=>move('B'));
  document.getElementById('undo').addEventListener('click',()=>{const prev=history.pop();if(!prev){status.textContent='There is no move to undo yet.';return}({position,scoreA,scoreB}=prev);status.textContent=prev.message;render()});
- document.getElementById('reset').addEventListener('click',()=>{position=4;scoreA=0;scoreB=0;history=[];status.textContent='New game – Anstoß in der Mitte.';render()});
+ document.getElementById('reset').addEventListener('click',()=>{position=4;scoreA=0;scoreB=0;history=[];status.textContent='New game – Kick-off from the centre.';render()});
  document.getElementById('fullscreen').addEventListener('click',async()=>{try{if(!document.fullscreenElement)await document.documentElement.requestFullscreen();else await document.exitFullscreen()}catch(e){status.textContent='Full-screen mode is not available in this browser.'}});
  document.addEventListener('keydown',e=>{if(e.key==='ArrowLeft')move('A');if(e.key==='ArrowRight')move('B');if(e.key.toLowerCase()==='r')document.getElementById('reset').click()});render();
 })();
